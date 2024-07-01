@@ -8,6 +8,7 @@ import { ModalService } from '../../../shared/services/components/modal.service'
 import { LoaderService } from '../../../shared/services/components/loader.service';
 import { TvProgramService } from '../../../shared/services/components/tv-program.service';
 import { VhsEffectService } from '../../../shared/services/components/vhs-effect.service';
+import { MenuService } from '../../../shared/services/components/menu.service';
 
 @Component({
   selector: 'app-terminal',
@@ -32,6 +33,7 @@ export class TerminalComponent implements OnInit, OnDestroy {
   loaderService = inject(LoaderService);
   tvProgramService = inject(TvProgramService);
   vhsEffectService = inject(VhsEffectService);
+  menuService = inject(MenuService);
 
   @ViewChild('terminalList', { static: false }) terminalList!: ElementRef;
 
@@ -62,7 +64,11 @@ export class TerminalComponent implements OnInit, OnDestroy {
   }
 
   toggleTerminalIsVisible(): void {
-    this.isVisible = !this.isVisible;
+    if(!this.isVisible) {
+      this.terminalService.show();
+    } else {
+      this.terminalService.hide();
+    }
   }
 
   onPressKeyCtrlQ(): void {
@@ -193,11 +199,11 @@ export class TerminalComponent implements OnInit, OnDestroy {
     if(this.inputCommandValue) {
       const command = this.inputCommandValue;
       this.updateCommandsHistory(command);
-      this.commandsLine(command);
+      this.switchOnCommandLine(command);
     }
   }
 
-  commandsLine(command: string): void {
+  switchOnCommandLine(command: string): void {
     if(TerminalService.enabledCommands.includes(command)) {
       switch(command) {
         case 'help': 
@@ -222,6 +228,10 @@ export class TerminalComponent implements OnInit, OnDestroy {
         case 'show vhs': this.vhsEffectService.show(); this.vhsEffectService.showFooter();
         break;
         case 'hide vhs': this.vhsEffectService.hide(); this.vhsEffectService.hideFooter();
+        break;
+        case 'show menu': this.menuService.show();
+        break;
+        case 'hide menu': this.menuService.hide();
         break;
       }
     }

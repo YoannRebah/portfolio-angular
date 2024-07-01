@@ -24,7 +24,9 @@ export class TerminalService {
       'play tv',
       'stop tv',
       'show vhs',
-      'hide vhs'
+      'hide vhs',
+      'show menu',
+      'hide menu',
     ];
   }
 
