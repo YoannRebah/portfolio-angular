@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Anchor } from '../../../shared/models/anchor.interface';
 import { MenuService } from '../../../shared/services/components/menu.service';
+import { ModalService } from '../../../shared/services/components/modal.service';
 
 @Component({
   selector: 'app-menu-content',
@@ -12,6 +13,7 @@ import { MenuService } from '../../../shared/services/components/menu.service';
 
 export class MenuContentComponent {
   menuService = inject(MenuService);
+  modalService = inject(ModalService);
   menuLinks: Anchor[] = [
     {
       text: 'Accueil',
@@ -67,10 +69,20 @@ export class MenuContentComponent {
       text: 'Les articles du blog',
       href: '#blog',
       ariaLabel: 'Les articles du blog',
+    },
+    {
+      text: '<i class="fa-brands fa-github" aria-hidden="true"></i> Code source',
+      href: 'https://github.com/YoannRebah/portfolio-angular',
+      target: '_blank',
+      ariaLabel: 'Code source (GitHub)',
     }
   ]
 
   onClickHideMenu(): void {
     this.menuService.hide();
+  }
+
+  onClickShowSettings(): void {
+    this.modalService.show('modal-settings');
   }
 }
