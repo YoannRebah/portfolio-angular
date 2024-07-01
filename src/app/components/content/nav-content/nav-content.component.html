@@ -48,7 +48,7 @@
         <button 
           (click)="onClickShowUserAccount()" 
           class="btn w-[28px] h-[28px] uppercase text-lg bg-pink-dark border border-pink text-white text-shadow-chromatic-glitch hover:bg-pink"
-          title="Compte utilisateur"
+          [title]="'Connecté en tant que ' + userName"
         >
           <span [innerHTML]="userNameFirstLetter"></span>
         </button>

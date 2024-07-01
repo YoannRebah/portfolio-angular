@@ -54,6 +54,7 @@ export class NavContentComponent implements OnInit{
     },
   ];
   userLoggedIn: boolean = false;
+  userEmail!: string | undefined;
   userName!: string | undefined;
   userNameFirstLetter!: string | undefined;
   modalService = inject(ModalService);
@@ -64,7 +65,7 @@ export class NavContentComponent implements OnInit{
   constructor() {}
 
   ngOnInit(): void {
-    this.checkUserConnectionStatus();
+    this.setUserInfos();
   }
 
   onClickShowSettings(): void {
@@ -83,20 +84,16 @@ export class NavContentComponent implements OnInit{
     this.menuService.show();
   }
 
-  checkUserConnectionStatus(): void {
+  setUserInfos(): void {
     this.authService.user$.subscribe((user: { email: string; displayName: string; }) => {
       if(user) {
-        this.authService.currentUserSignal.set({
-          email: user.email!,
-          username: user.displayName!
-        });
-        this.userName = this.authService.currentUserSignal()?.username;
-        if(this.userName) {
+        if(user.email && user.displayName) {
+          this.userEmail = user.email;
+          this.userName = user.displayName;
           this.userNameFirstLetter = this.userName.substring(0, 1);
         }
         this.userLoggedIn = true;
       } else {
-        this.authService.currentUserSignal.set(null);
         this.userLoggedIn = false;
       }
     });
