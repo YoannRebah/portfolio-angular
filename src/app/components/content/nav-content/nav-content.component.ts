@@ -3,6 +3,7 @@ import { Anchor } from '../../../shared/models/anchor.interface';
 import { ModalService } from '../../../shared/services/components/modal.service';
 import { AuthService } from '../../../shared/services/base/auth.service';
 import { LoaderHourglassService } from '../../../shared/services/components/loader-hourglass.service';
+import { MenuService } from '../../../shared/services/components/menu.service';
 
 @Component({
   selector: 'app-nav-content',
@@ -58,6 +59,7 @@ export class NavContentComponent implements OnInit{
   modalService = inject(ModalService);
   authService = inject(AuthService);
   loaderHourglassService = inject(LoaderHourglassService);
+  menuService = inject(MenuService);
 
   constructor() {}
 
@@ -75,6 +77,10 @@ export class NavContentComponent implements OnInit{
 
   onClickLoginRegister(): void {
     this.loaderHourglassService.show();
+  }
+
+  onClickShowMenu(): void {
+    this.menuService.show();
   }
 
   checkUserConnectionStatus(): void {

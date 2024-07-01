@@ -49,4 +49,8 @@ export class MenuComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+  onClickHideMenu(): void {
+    this.menuService.hide();
+  }
 }
