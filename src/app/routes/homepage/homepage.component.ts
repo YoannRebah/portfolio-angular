@@ -8,6 +8,7 @@ import { SectionComponent } from '../../components/layout/section/section.compon
 import { HeaderComponent } from '../../components/layout/header/header.component';
 import { NavComponent } from '../../components/layout/nav/nav.component';
 import { FooterComponent } from '../../components/layout/footer/footer.component';
+import { MenuComponent } from '../../components/layout/menu/menu.component';
 // base
 import { LoaderComponent } from '../../components/base/loader/loader.component';
 import { VhsEffectComponent } from '../../components/base/vhs-effect/vhs-effect.component';
@@ -29,7 +30,7 @@ import { IntroductionComponent } from '../../components/content/introduction/int
 import { FormContactComponent } from '../../components/content/form-contact/form-contact.component';
 import { AdsPosterComponent } from '../../components/content/ads-poster/ads-poster.component';
 import { BlogComponent } from '../../components/content/blog/blog.component';
-import { MenuComponent } from '../../components/layout/menu/menu.component';
+import { MenuContentComponent } from '../../components/content/menu-content/menu-content.component';
 
 @Component({
   selector: 'app-homepage',
@@ -64,6 +65,7 @@ import { MenuComponent } from '../../components/layout/menu/menu.component';
     FormContactComponent,
     AdsPosterComponent,
     BlogComponent,
+    MenuContentComponent,
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.scss'

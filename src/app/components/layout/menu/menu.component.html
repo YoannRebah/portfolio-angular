@@ -1,9 +1,15 @@
 @if(isVisible) {
     <div class="fixed-backdrop-full bg-black-transparent-dark z-40">
-        <div class="relative w-[320px] h-full p-4 pl-6 bg-body flex flex-col">
-            <header class="text-lg">Menu</header>
-            <ng-content></ng-content>
-            <footer></footer>
+        <div class="relative w-[320px] h-full bg-body border-r-2 border-cyan">
+            <div class="relative h-full flex flex-col">
+                <header class="p-4 pl-6 flex-[1_1_10%]">
+                    <p class="text-lg text-shadow-chromatic-glitch">Menu</p>
+                </header>
+                <div class="p-4 pl-6 flex-[1_1_80%]">
+                    <ng-content></ng-content>
+                </div>
+                <footer class="p-4 pl-6 flex-[1_1_10%]"></footer>
+            </div>
         </div>
     </div>
 }

@@ -1,0 +1,18 @@
+<nav>
+    <ul>
+        @for (menuLink of menuLinks; track $index) {
+            <li class="mb-3">
+                <a 
+                    [href]="menuLink.href" 
+                    [attr.aria-label]="menuLink.ariaLabel" 
+                    [attr.target]="menuLink.target"
+                    [attr.rel]="menuLink.target === '_blank' ? 'noopener noreferrer' : null"
+                    [innerHTML]="menuLink.text"
+                    class="text-sm"
+                    (click)="onClickHideMenu()"
+                >
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
